@@ -2,7 +2,7 @@
     const Personal Info strings to be populated into Resume
 */
 const _NAME = 'Ramandeep Singh';
-const _ADDRESS = ['32-45-73' + 'rd'.sup() + ' Street',
+const _ADDRESS = ['32-45-73' + 'rd'.sup() + ' Street ' +
                   '2' + 'nd'.sup() + ' Floor',           
                   'East Elmhurst, New York 11370'
                  ];
@@ -10,7 +10,7 @@ const _ADDRESS = ['32-45-73' + 'rd'.sup() + ' Street',
 /*
     const stiring for the Objective statement
 */
-const _OBJECTIVE_STATEMENT = 'Looking for Entery level / intermediate postion as a Professional Programmer. Enjoy\'s working in an envoirment with lots to learn and dynamic programing. Enjoys programing in C++, SQL , Backend JS.';
+const _OBJECTIVE_STATEMENT = 'Looking for Entery level / Intermediate postion as a professional programmer. Enjoy\'s working in an envoirment with lots to learn and dynamic programing. Enjoys programing in C++, SQL , Backend JS.';
 
 /*
     Object that contains info on work exprience

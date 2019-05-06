@@ -1,0 +1,77 @@
+*, html {
+    margin:0;
+    padding:0;  
+    size : portrait;
+}
+@page 
+{
+    size : portrait;
+}
+@media print { 
+    body 
+    { 
+        -webkit-print-color-adjust: exact;
+        margin: 0;
+        padding: 0;
+    }
+
+}
+/*
+    main wrapper div to set all divs under this to a flexbox property
+    allowinf us to format ans place them at desired positions.
+*/
+#wrapper_div
+{
+    overflow: hidden; 
+    width: 100%;
+    height: 100%;
+    display : flex;
+    margin: 0;
+}
+
+/*
+    font , padding, and under border definitions for all title elements
+*/
+div[id$= '_title']
+{
+    padding-bottom: 10px; 
+    letter-spacing: 2px;
+    font-size: 26pt;
+    border-bottom: 1px solid red;
+}
+
+#Personal_Info_Box
+{
+    width: 30%;
+    height: 15%;
+    padding: 2%;
+    letter-spacing: 2px;
+    flex: 1;
+    line-height: 26pt;
+    background: lightblue;
+    float : left;
+    margin: 0;
+}
+#name
+{
+    padding-top: 10px;
+}
+
+#Objective_Box
+{   
+    padding : 2%;
+    background : gray;
+    height : 20% ;
+}
+
+
+
+#objective_info
+{
+    padding-top: 10px;
+}
+
+
+
+
+
