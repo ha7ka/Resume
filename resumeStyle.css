@@ -64,7 +64,18 @@ div[id$= '_title']
     height : 20% ;
 }
 
-
+#Skills_Box
+{
+    width: 30%;
+    height: 15%;
+    padding: 2%;
+    letter-spacing: 2px;
+    flex: 1;
+    line-height: 26pt;
+    background: lightblue;
+    float : left;
+    margin: 0;
+}
 
 #objective_info
 {

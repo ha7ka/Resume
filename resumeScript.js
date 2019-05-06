@@ -47,7 +47,7 @@ const _SKILLS =
                     'C++','Java','JavaScript','MySQL', 'TSQL'
                   ],
     'Web Techonlogies' : [
-                            'NodeJS' , 'Express', 'Socket.io', 'MYSQL'
+                            'NodeJS' , 'Express', 'Socket.io'
                          ]
 };
 
@@ -141,9 +141,18 @@ function populateSkills()
     */
     skills_info_table.innerHTML = '';
 
-    let skills_info_cat_row = skills_info_table.insertRow();
-    skills_info_cat_row.id = 'skill_catagorey_row'; 
-
+    for(let j = 0; j < Object.keys(_SKILLS).length; ++j)
+    {
+        let skills_info_cat_row = skills_info_table.insertRow();
+        skills_info_cat_row.id = 'skill_catagorey_' + j + '_row'; 
+        skills_info_cat_row.innerHTML = Object.keys(_SKILLS)[j];
+        for(i in _SKILLS[Object.keys(_SKILLS)[j]])
+        {
+            let skills_info_row = skills_info_table.insertRow();
+            skills_info_row.id = Object.keys(_SKILLS)[j] + '_skills_info_' + i;
+            skills_info_row.innerHTML = _SKILLS[Object.keys(_SKILLS)[j]][i];
+        }
+    }
 }
 
 /*
