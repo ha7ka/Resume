@@ -6,6 +6,11 @@ const _ADDRESS = ['32-45-73' + 'rd'.sup() + ' Street ' +
                   '2' + 'nd'.sup() + ' Floor',           
                   'East Elmhurst, New York 11370'
                  ];
+const _EMAIL = 'ha7ka1@gmail.com';
+const _PHONE_NUMBER = '718-971-4215';
+const _LINKEDIN = 'www.linkedin.com/in/r-singh92';
+const _GITHUB = 'https://github.com/ha7ka';
+
 
 /*
     const stiring for the Objective statement
@@ -77,6 +82,7 @@ function populatePersonalInfo()
 {
     document.getElementById('personal_info_title').innerHTML = 'Personal Info';
     document.getElementById('name').innerHTML = _NAME;
+    document.getElementById('job_speciality').innerHTML = 'Software Engineer';
     let personal_info_table = document.getElementById('personal_info_table');
     /*
         Empty table and enter info
@@ -89,6 +95,38 @@ function populatePersonalInfo()
         row.insertCell().innerHTML = _ADDRESS[i];
         row.id = 'personal_info_row_'+ i;
     }
+
+    /*
+        Email
+    */
+
+    let row = personal_info_table.insertRow();
+    row.id = 'email_row';
+    row.innerHTML = _EMAIL;
+
+    /*
+        Phone Number
+    */
+
+    row = personal_info_table.insertRow();
+    row.id = 'phone_row';
+    row.innerHTML = _PHONE_NUMBER;
+
+    /*
+        Linked In
+    */
+    row = personal_info_table.insertRow();
+    row.id = 'linkedin_row';
+    row.innerHTML = _LINKEDIN;
+
+    /*
+        Git Hub
+    */
+    row = personal_info_table.insertRow();
+    row.id = 'github_row';
+    row.innerHTML = _GITHUB;
+
+
 }
 /*
     Fill the Objective Box with declared Objective statment
