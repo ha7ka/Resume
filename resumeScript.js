@@ -15,7 +15,7 @@ const _GITHUB = 'https://github.com/ha7ka';
 /*
     const stiring for the Objective statement
 */
-const _OBJECTIVE_STATEMENT = 'Looking for Entery level / Intermediate postion as a professional programmer. Enjoy\'s working in an envoirment with lots to learn and dynamic programing. Enjoys programing in C++, SQL , Backend JS.';
+const _OBJECTIVE_STATEMENT = 'Looking for Entry level / Intermediate postion as a professional programmer. Enjoy\'s working in an envoirment with lots to learn and dynamic programing. Enjoys programing in C++, SQL , Backend JS.';
 
 /*
     Object that contains info on work exprience
@@ -83,48 +83,52 @@ function populatePersonalInfo()
     document.getElementById('personal_info_title').innerHTML = 'Personal Info';
     document.getElementById('name').innerHTML = _NAME;
     document.getElementById('job_speciality').innerHTML = 'Software Engineer';
-    let personal_info_table = document.getElementById('personal_info_table');
+    let personal_info_list = document.getElementById('Personal_Info_List');
     /*
-        Empty table and enter info
+        Empty list and enter info
     */
-    personal_info_table.innerHTML = '';
+   personal_info_list.innerHTML = '';
     
     for(let i in _ADDRESS)
     {
-        let row = personal_info_table.insertRow();
-        row.insertCell().innerHTML = _ADDRESS[i];
-        row.id = 'personal_info_row_'+ i;
+        let list_item = document.createElement("LI");
+        list_item.innerHTML = _ADDRESS[i];
+        list_item.id = 'personal_info_item_'+ i;
+        personal_info_list.appendChild(list_item);
     }
 
     /*
         Email
     */
 
-    let row = personal_info_table.insertRow();
-    row.id = 'email_row';
-    row.innerHTML = _EMAIL;
-
+    let list_item = document.createElement("LI");
+    list_item.innerHTML = _EMAIL;
+    list_item.id = 'personal_info_item_email';
+    personal_info_list.appendChild(list_item);
     /*
         Phone Number
     */
 
-    row = personal_info_table.insertRow();
-    row.id = 'phone_row';
-    row.innerHTML = _PHONE_NUMBER;
+    list_item = document.createElement("LI");
+    list_item.innerHTML = _PHONE_NUMBER;
+    list_item.id = 'personal_info_item_phone';
+    personal_info_list.appendChild(list_item);
 
     /*
         Linked In
     */
-    row = personal_info_table.insertRow();
-    row.id = 'linkedin_row';
-    row.innerHTML = _LINKEDIN;
+    list_item = document.createElement("LI");
+    list_item.innerHTML = _LINKEDIN;
+    list_item.id = 'personal_info_item_LinkedIN';
+    personal_info_list.appendChild(list_item);
 
     /*
         Git Hub
     */
-    row = personal_info_table.insertRow();
-    row.id = 'github_row';
-    row.innerHTML = _GITHUB;
+    list_item = document.createElement("LI");
+    list_item.innerHTML = _GITHUB;
+    list_item.id = 'personal_info_item_phone';
+    personal_info_list.appendChild(list_item);
 
 
 }

@@ -6,7 +6,7 @@
 }
 @page 
 {
-    size : portrait;
+    size : letter;
 }
 @media print 
 { 
@@ -18,60 +18,104 @@
     }
 
 }
+@font-face 
+{
+    font-family: Railway;
+    src: url(./Fonts/raleway_thin-webfont.woff);
+}
+
+
+
 /*
     font , padding, and under border definitions for all title elements
 */
 div[id$= '_title']
 {
-    padding-bottom: 10px; 
+    padding-bottom: 10px;
     letter-spacing: 2px;
     font-size: 26pt;
     border-bottom: 1px solid red;
 }
 
+#grid_wrapper
+{
+    display: grid;
+    grid-template-columns: 25vmax 75vmax;
+    grid-template-rows: 15vmax 85vmax;
+}
+
+/*
+    define placement and other properties of wropper divs in the grid
+*/
+
 #wrapper_left
 {
-    
-    float: left;
     letter-spacing: 2px;
     background: lightblue;
     margin: 0;
+    grid-column: 1 / 1;
+    grid-row: 2 / 2;
 
-    width : 25vw;
-    height: 100vh;
-    padding-top: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
-
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 #wrapper_right
 {
-    padding-left : 40px;
+    letter-spacing: 2px;
+    background: gray;
     margin: 0;
+    grid-column: 2 / 2;
+    grid-row: 2 / 2;
+
+
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#wrapper_name
+{
+    letter-spacing: 2px;
+    background: khaki;
+    margin: 0;
+    line-height: 1.6;
+
+    grid-column: 1 / span 2;
+    grid-row: 1 / 1;
+}
+
+#name_table
+{
+    margin-left: auto;
+	margin-right: auto;
+}
+
+#Personal_Info_List li
+{
+    list-style: none;
+    padding-top: 20px;
 }
 
 
 #name
 {
-    padding-top: 10px;
-    padding-right: 40px;
-    font-size: 36pt;
-}
+            
+    font-family : Railway;
+    font-size : 46pt;
 
+    vertical-align: middle;
+}
 #Skills_Box
 {
     letter-spacing: 2px;
     padding-top : 20px ;
     line-height: 26pt;
-    background: lightblue;
     margin: 0;
 }
 
 #Objective_Box
 {   
     background : gray;
-    height : 20% ;
 }
 
 
