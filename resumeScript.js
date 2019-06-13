@@ -2,56 +2,58 @@
     const Personal Info strings to be populated into Resume
 */
 const _NAME = 'Ramandeep Singh';
-const _ADDRESS = ['32-45-73' + 'rd'.sup() + ' Street ' +
-                  '2' + 'nd'.sup() + ' Floor',           
-                  'East Elmhurst, New York 11370'
+const _SPECIALTY = 'Software Engineer'
+const _ADDRESS = ['32-45-73' + 'rd'.sup() + ' Street \n' +
+                  '2' + 'nd'.sup() + ' Floor \n East Elmhurst, New York 11370'
                  ];
 const _EMAIL = 'ha7ka1@gmail.com';
-const _PHONE_NUMBER = '718-971-4215';
+const PHONE_NUMBER = '718-971-4215';
 const _LINKEDIN = 'www.linkedin.com/in/r-singh92';
 const _GITHUB = 'https://github.com/ha7ka';
 
 
 /*
-    const stiring for the Objective statement
+    const string for the Objective statement
 */
-const _OBJECTIVE_STATEMENT = 'Looking for Entry level / Intermediate postion as a professional programmer. Enjoy\'s working in an envoirment with lots to learn and dynamic programing. Enjoys programing in C++, SQL , Backend JS.';
+const _OBJECTIVE = 'Looking for Entry level / Intermediate position as a professional programmer. Enjoy\'s working in an environment with lots to learn and dynamic programing. Enjoys programing in JavaScript, C++, and SQL .';
 
 /*
-    Object that contains info on work exprience
+    Object that contains info on work experience
+
+    Make sure the last one is job responsibilities as that has to be handled different as the rest
 */
 
-const WORK_EXPERENCE = 
+const WORK_EXPERIENCE = 
 {
-    'Line_Up_App_Intern' : {
-                            'Dates Worked' : 'Aug 18, 2018 - Dec 31, 2018',
+    'LineUpApp Intern' : {
+                            'Dates' : 'Aug 18, 2018 - Dec 31, 2018',
                             'Company Name' : 'LineUpApp',
-                            'Postion' : 'Intern',
-                            'Job Responsibilites' : [
-                                                    'Manage AWS Infastructure',
-                                                    'Design and Maintain MySQl Database',
-                                                    'Write MySQL Stored Procedures for use by the Backend'
+                            'Position' : 'Intern',
+                            'Job Responsibilities' : [
+                                                        'Manage AWS Infrastructure',
+                                                        'Design and Maintain MySQl Database',
+                                                        'Write MySQL Stored Procedures for use by the Backend'
                                                     ]
                         },
 
-    'Line_Up_App_Job' : {
-                            'Dates Worked' : 'Jan 1, 2019 - Present',                        
+    'LineUpApp Job' : {
+                            'Dates' : 'Jan 1, 2019 - Present',                        
                             'Company Name' : 'LineUpApp',
-                            'Postion' : 'Software Developer',
-                            'Job Responsibilites' : [
-                                                    'Manage AWS Infastructure',
-                                                    'Design and Maintain MySQl Database',
-                                                    'Write MySQL Stored Procedures for use by the Backend',
-                                                    'Write and maintiain Backend Endpoints using NodeJs, WebSockets, Express Technologies'
-                                                ]
+                            'Position' : 'Software Developer',
+                            'Job Responsibilities' : [
+                                                        'Help Manage AWS Infrastructure',
+                                                        'Design and Maintain MySQl Database',
+                                                        'Write MySQL Stored Procedures for use by the Backend',
+                                                        'Write and maintain Backend Endpoints using NodeJs, WebSockets, and Express Technologies'
+                                                    ]
                             }
 };
 const _SKILLS = 
 {
     'Languages' : [
-                    'C++','Java','JavaScript','MySQL', 'TSQL'
+                    'C++','Java','JavaScript','MySQL', 'T-SQL'
                   ],
-    'Web Techonlogies' : [
+    'Web Technologies' : [
                             'NodeJS' , 'Express', 'Socket.io'
                          ]
 };
@@ -59,7 +61,7 @@ const _SKILLS =
 const _EDUCATION = 
 {
     'Queens College' :  {
-                            'Dates Attended' : 'Spring 2015 - Spring 2019',
+                            'Dates' : 'Spring 2015 - Spring 2019',
                             'Degree' : 'Computer Science (B.S)'
                         }
 };
@@ -68,162 +70,153 @@ const _EDUCATION =
 */
 window.onload = function()
 {
-    populatePersonalInfo();
-    populateObjective();
-    populateWorkExperience();
-    populateEducation();
-    populateSkills();
+    populateNameHeader('name','job_specialty', _NAME , _SPECIALTY);
+    populatePersonalInfo('personal_info_title', 'personal_info_list', 
+    {
+        email :_EMAIL,
+        phone_number : PHONE_NUMBER,
+        git : _GITHUB, 
+        linked_in :_LINKEDIN,
+        address : _ADDRESS ,
+    });
+    populateSkills('skills_info_title', 'skills_info_list', _SKILLS);
+    populateObjective('objective_title','objective_info' , _OBJECTIVE);
+    populateWorkExperience('work_experience_title', 'work_experience_list', WORK_EXPERIENCE);
+    populateEducation('education_info_title', 'education_info_list', _EDUCATION);
+    
 } 
+
+/*
+    ul insert Helper Function
+*/
+function addItem(list , item_id , data)
+{
+    let list_item = document.createElement("li");
+    list_item.setAttribute("id", item_id);
+    list_item.innerHTML = data;
+    list.appendChild(list_item);
+}
+/*
+    Fill the Header of the Page
+*/
+function populateNameHeader(name_id, specialty_id , name_data, specialty_data)
+{
+    document.getElementById(name_id).innerHTML = name_data;
+    document.getElementById(specialty_id).innerHTML = specialty_data;
+}
 
 /*
     Fill the Personal Info Box with declared Personal consts
 */
-function populatePersonalInfo()
+function populatePersonalInfo(_title , list_name , data)
 {
-    document.getElementById('personal_info_title').innerHTML = 'Personal Info';
-    document.getElementById('name').innerHTML = _NAME;
-    document.getElementById('job_speciality').innerHTML = 'Software Engineer';
-    let personal_info_list = document.getElementById('Personal_Info_List');
-    /*
-        Empty list and enter info
-    */
-   personal_info_list.innerHTML = '';
-    
-    for(let i in _ADDRESS)
+    document.getElementById(_title).innerHTML = 'Personal Info';
+    let personal_info_list = document.getElementById(list_name);
+
+    personal_info_list.innerHTML = '';
+
+    let keys  = Object.keys(data);
+
+    for (i in keys)
     {
-        let list_item = document.createElement("LI");
-        list_item.innerHTML = _ADDRESS[i];
-        list_item.id = 'personal_info_item_'+ i;
-        personal_info_list.appendChild(list_item);
+        addItem(personal_info_list , keys[i] + '_id', data[keys[i]]);
     }
-
-    /*
-        Email
-    */
-
-    let list_item = document.createElement("LI");
-    list_item.innerHTML = _EMAIL;
-    list_item.id = 'personal_info_item_email';
-    personal_info_list.appendChild(list_item);
-    /*
-        Phone Number
-    */
-
-    list_item = document.createElement("LI");
-    list_item.innerHTML = _PHONE_NUMBER;
-    list_item.id = 'personal_info_item_phone';
-    personal_info_list.appendChild(list_item);
-
-    /*
-        Linked In
-    */
-    list_item = document.createElement("LI");
-    list_item.innerHTML = _LINKEDIN;
-    list_item.id = 'personal_info_item_LinkedIN';
-    personal_info_list.appendChild(list_item);
-
-    /*
-        Git Hub
-    */
-    list_item = document.createElement("LI");
-    list_item.innerHTML = _GITHUB;
-    list_item.id = 'personal_info_item_phone';
-    personal_info_list.appendChild(list_item);
 
 
 }
-/*
-    Fill the Objective Box with declared Objective statment
-*/
-function populateObjective()
-{
-    document.getElementById('objective_title').innerHTML = 'Objective';
-    document.getElementById('objective_info').innerHTML = _OBJECTIVE_STATEMENT;
-}
-
-/*
-    Work Experieance
-*/
-function populateWorkExperience()
-{
-    document.getElementById('work_experience_title').innerHTML = 'Work Exprience';
-    let work_experience_table = document.getElementById('work_experience_table');
-    work_experience_table.innerHTML = '';
-    let k = 0;
-    for(let i in WORK_EXPERENCE)
-    {
-        let work_expreance_row = work_experience_table.insertRow();
-        let jobsTable = document.createElement("TABLE");
-        let tableid = 'jobs_table_' + k;
-        work_expreance_row.id = tableid;
-        jobsTable.innerHTML = '';
-        let p = 0 ;
-        for(let j = 0; j < Object.keys(WORK_EXPERENCE[i]).length; ++j)
-        {
-            let jobs_table_row = jobsTable.insertRow();
-            jobs_table_row.id = 'job_name_'+ p;
-            let key = Object.keys(WORK_EXPERENCE[i])[j];
-            jobs_table_row.insertCell().innerHTML = key+ ' : ' + WORK_EXPERENCE[i][key];
-            ++p;
-        }
-        work_expreance_row.appendChild(jobsTable);
-        ++k;
-    }
-} 
 /*
     Populate Skills
 */
-function populateSkills()
+function populateSkills(_title, list_name, data)
 {
-    document.getElementById('skills_info_title').innerHTML = 'Skills';
+    document.getElementById(_title).innerHTML = 'Skills';
 
-    let skills_info_table = document.getElementById('skills_info_table');
-    /*
-        Empty table and enter info
-    */
-    skills_info_table.innerHTML = '';
+    let skills_info_list = document.getElementById(list_name);
 
-    for(let j = 0; j < Object.keys(_SKILLS).length; ++j)
+    skills_info_list.innerHTML = '';
+
+    let keys = Object.keys(data);
+
+    for (i in keys)
     {
-        let skills_info_cat_row = skills_info_table.insertRow();
-        skills_info_cat_row.id = 'skill_catagorey_' + j + '_row'; 
-        skills_info_cat_row.innerHTML = Object.keys(_SKILLS)[j];
-        for(i in _SKILLS[Object.keys(_SKILLS)[j]])
-        {
-            let skills_info_row = skills_info_table.insertRow();
-            skills_info_row.id = Object.keys(_SKILLS)[j] + '_skills_info_' + i;
-            skills_info_row.innerHTML = _SKILLS[Object.keys(_SKILLS)[j]][i];
-        }
+        addItem(skills_info_list, 'skill_cat_' + keys[i] , keys[i]);
+        let inner_list = document.createElement('ul');
+        let inner_data = data[keys[i]];
+
+        for(j in inner_data)
+            addItem(inner_list , keys[i] + '_'  + j, inner_data[j]);
+        skills_info_list.appendChild(inner_list);
     }
 }
+/*
+    Fill the Objective Box with declared Objective statement
+*/
+function populateObjective(_title , _info , objective)
+{
+    document.getElementById(_title).innerHTML = 'Objective';
+    document.getElementById(_info).innerHTML = objective;
+}
+
+/*
+    Work Experience
+    Prams
+        list_name : html id for the list we are editing
+        _title : html id for the Heading for this section of the resume
+*/
+function populateWorkExperience(_title, list_name , data)
+{
+    document.getElementById(_title).innerHTML = 'Work Experience';
+    let work_experience_list = document.getElementById(list_name);
+    /*
+        clean list
+    */
+    work_experience_list.innerHTML = '';
+
+    let keys = Object.keys(data);
+
+    for(i in keys)
+    {
+        addItem(work_experience_list , 'work_exp_' + keys[i], keys[i])
+        let inner_list = document.createElement('ul');
+        let inner_data = data[keys[i]];
+        let inner_keys = Object.keys(inner_data)
+
+        for (let j = 0; j < inner_keys.length - 2; ++j)
+            addItem(inner_list, inner_keys[j], inner_data[inner_keys[j]]);
+        let responsibilities = inner_data[inner_keys[inner_keys.length - 1]];
+        let responsibilities_list = document.createElement('ul');
+        for(let j = 0; j < responsibilities.length; ++j)
+            addItem(responsibilities_list , 'responsibilities_' + j , responsibilities[j]);
+        inner_list.appendChild(responsibilities_list);
+        work_experience_list.appendChild(inner_list);
+    }
+}
+
 
 /*
     Populate Education
 */
-function populateEducation()
+function populateEducation(_title, list_name, data)
 {
-    document.getElementById('education_info_title').innerHTML = 'Education';
+    document.getElementById(_title).innerHTML = 'Education';
 
-    let education_info_table = document.getElementById('education_info_table');
+    let education_info_list = document.getElementById(list_name);
     /*
         Empty table and enter info
     */
-    education_info_table.innerHTML = '';
-    
-    let k = 0;
-    for(let i in _EDUCATION)
+    education_info_list.innerHTML = '';
+
+    let keys = Object.keys(data);
+
+    for(let i in keys)
     {
-        let education_table_row = education_info_table.insertRow();
-        education_table_row.id = 'school_name_'+ k;
-        education_table_row.insertCell().innerHTML ='School Name: ' + i ;
-        let p = 0;
-        for(j in _EDUCATION[i])
-        {
-            let education_table_row = education_info_table.insertRow();
-            education_table_row.id = 'school_info_'+ p;
-            education_table_row.insertCell().innerHTML = j + ' : ' + _EDUCATION[i][j];
-            ++p;
-        }
-        ++k;
+        addItem(education_info_list, 'edu_title_' + keys[i] , keys[i]);
+        let inner_list = document.createElement('ul');
+        let inner_data = data[keys[i]];
+
+        for(j in inner_data)
+            addItem(inner_list , keys[i] + '_'  + j, inner_data[j]);
+        education_info_list.appendChild(inner_list);
     }
 }
+

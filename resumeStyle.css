@@ -2,6 +2,7 @@
 {
     margin:0;
     padding:0;  
+    white-space: pre-line;
     size : portrait;
 }
 @page 
@@ -23,6 +24,7 @@
     font-family: Railway;
     src: url(./Fonts/raleway_thin-webfont.woff);
 }
+
 
 
 
